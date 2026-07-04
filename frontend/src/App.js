@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
+import { useEffect } from "react";
+import { gsap } from "gsap";
 
 function App() {
 
@@ -87,11 +89,29 @@ const handleSubmit = async (e) => {
   };
 
 
+  useEffect(() => {
+  gsap.from(".churntitle", {
+    y: 50,
+    opacity: 0,
+    duration: 1.5,
+    scrollTrigger: {
+      trigger: ".churntitle",
+      start: "top 80%",
+      end: "bottom 20%",
+      scrub: true,
+    }
+  });
+
+  
+  
+}, []);
+
+
   return (
     <>
 
    <div className="homepage">
-      <h1>Churn!Q</h1>
+      <h1 className="churntitle">Churn!Q</h1>
 
       <h3>AI-Powered Analytics</h3>
       <h2 className="predict">Predict Customer Churn</h2>
