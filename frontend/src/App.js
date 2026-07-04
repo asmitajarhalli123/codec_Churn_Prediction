@@ -3,6 +3,9 @@ import axios from "axios";
 import "./App.css";
 import { useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
 
@@ -93,18 +96,34 @@ const handleSubmit = async (e) => {
   gsap.from(".churntitle", {
     y: 50,
     opacity: 0,
-    duration: 1.5,
+    duration: 1,
     scrollTrigger: {
       trigger: ".churntitle",
-      start: "top 80%",
-      end: "bottom 20%",
+      start: "top 32%",
+     
+      scrub: true,
+      
+    }
+  });
+  
+}, []);
+
+
+  useEffect(() => {
+gsap.from(".card", {
+    y: 50,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.3,
+    scrollTrigger: {
+      trigger: ".cards",
+      start: "top 97%",
+      end : "top 70%",
+      markers: true,
       scrub: true,
     }
   });
-
-  
-  
-}, []);
+  }, []);
 
 
   return (
