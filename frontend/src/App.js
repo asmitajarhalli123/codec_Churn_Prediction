@@ -119,7 +119,6 @@ gsap.from(".card", {
       trigger: ".cards",
       start: "top 97%",
       end : "top 70%",
-      markers: true,
       scrub: true,
     }
   });
